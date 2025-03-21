@@ -1,0 +1,73 @@
+[project]
+name = "atlassian-client"
+version = "0.1.4"
+description = "Async Python client for Atlassian products"
+authors = [
+    {name = "KhanhChu", email = "trongkhanh.chu@gmail.com"},
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["atlassian", "jira", "confluence", "async", "api"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: AsyncIO",
+]
+
+dependencies = [
+    "atlassian-python-api>=3.41.16",
+    "beautifulsoup4>=4.12.3",
+    "httpx>=0.28.0",
+    "python-dotenv>=1.0.1",
+    "markdownify>=0.11.6",
+    "markdown>=3.7.0",
+    "markdown-to-confluence>=0.3.0",
+    "pydantic>=2.10.6",
+    "trio>=0.29.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/khanhct/atlassian"
+Documentation = "https://github.com/khanhct/atlassian"
+Issues = "https://github.com/khanhct/atlassian"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/atlassian_client"]
+
+[dependency-groups]
+dev = [
+    "uv>=0.1.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "pre-commit>=3.6.0",
+    "ruff>=0.3.0",
+    "black>=24.2.0",
+    "mypy>=1.8.0",
+]
